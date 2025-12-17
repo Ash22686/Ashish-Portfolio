@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+body {
+  background-color: black;
+  color: white;
+  font-family: 'Inter', sans-serif; /* Cleaner main font */
+  overflow-x: hidden;
+}
+
+/* Add a custom utility for the massive header */
+h1 {
+  font-family: 'Lato', sans-serif; /* Thick impact font */
+}
