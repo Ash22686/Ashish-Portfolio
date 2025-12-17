@@ -111,12 +111,29 @@ const Hero = () => {
 
         </div>
 
-        {/* RIGHT SIDE: Empty Placeholder */}
-        <div className="hidden md:flex w-full md:w-1/2 h-[600px] items-center justify-center relative pr-28">
-           
-           <Spline scene="https://prod.spline.design/n7yRZr9hGkWx0kqJ/scene.splinecode" />
+        {/* RIGHT SIDE: Spline */}
+<div className="hidden md:flex w-full md:w-1/2 h-[600px] relative pr-28 overflow-hidden">
 
-        </div>
+  {/* Fixed Spline Stage */}
+  <div className="absolute inset-0 flex items-center justify-center">
+
+    {/* Hard bounded canvas */}
+    <div
+      className="relative"
+      style={{
+        width: "520px",
+        height: "520px",
+        transform: "scale(0.7) translateX(-80px)",
+        transformOrigin: "center",
+      }}
+    >
+      <Spline scene="https://prod.spline.design/n7yRZr9hGkWx0kqJ/scene.splinecode" />
+    </div>
+
+  </div>
+</div>
+
+
 
 
       </div>
