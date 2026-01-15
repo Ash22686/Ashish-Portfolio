@@ -21,3 +21,14 @@ h1 {
 canvas {
   image-rendering: optimizeSpeed;
 }
+
+/* Hide default cursor on desktop, keep it on touch devices */
+@media (min-width: 1024px) {
+  body {
+    cursor: none;
+  }
+  
+  a, button, [role="button"] {
+    cursor: none !important;
+  }
+}

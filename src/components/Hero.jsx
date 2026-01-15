@@ -135,7 +135,6 @@ const Hero = () => {
 
 
 
-
       </div>
 
     </section>

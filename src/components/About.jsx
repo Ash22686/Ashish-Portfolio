@@ -146,7 +146,7 @@ const About = () => {
             className="mt-16"
           >
             <a
-              href="https://www.dropbox.com/scl/fi/81abvx1w910p9exex1o8i/Resume.pdf?rlkey=c71t44oitoxwuo9me8jukkolk&dl=0"
+              href="https://drive.google.com/file/d/1oxVj9T4vkKZYrmgrxhsv4pNugn9NR3bD/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-4 px-10 py-5 bg-white text-black rounded-full text-xl font-bold hover:bg-zinc-800 hover:text-white border border-transparent hover:border-zinc-600 transition-all duration-300"

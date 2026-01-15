@@ -71,20 +71,22 @@ const Contact = () => {
               Drop me a line
             </span>
 
-            <a
-              href={`mailto:${email}`}
-              className="block text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight hover:text-zinc-400 transition-colors mb-8"
+            {/* Changed <a> to <div> to stop "OPEN" cursor */}
+            <div
+              onClick={() => (window.location.href = `mailto:${email}`)}
+              className="block text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight hover:text-zinc-400 transition-colors mb-8 cursor-default"
             >
               {email}
-            </a>
+            </div>
 
-            <button
+            {/* Changed <button> to <div> to stop "OPEN" cursor */}
+            <div
               onClick={handleCopy}
-              className="inline-flex items-center gap-3 px-6 py-3 border border-zinc-700 rounded-full text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-all w-fit"
+              className="inline-flex items-center gap-3 px-6 py-3 border border-zinc-700 rounded-full text-xs uppercase tracking-widest hover:bg-white hover:text-black transition-all w-fit cursor-default"
             >
               {copied ? <Check size={16} /> : <Copy size={16} />}
               {copied ? "Copied" : "Copy Email"}
-            </button>
+            </div>
           </div>
 
           {/* RIGHT: SOCIAL LINKS */}

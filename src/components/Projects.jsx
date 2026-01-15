@@ -9,7 +9,7 @@ import {
 
 // --- PROJECT DATA ---
 const projects = [
-    {
+  {
     id: 3,
     title: "Kolam Kar",
     category: "Frontend / Culture",
@@ -19,7 +19,6 @@ const projects = [
     github: "https://github.com/Ash22686/Kolam-Kar",
     live: "#"
   },
-  
   {
     id: 7,
     title: "Authenticator",
@@ -55,10 +54,10 @@ const projects = [
     title: "Farm Fusion – Agriculture Management System",
     category: "Full Stack / AgriTech",
     description: "A full-stack agriculture management platform helping farmers manage farms, crops, soil health, irrigation, and weather data. Features include soil monitoring, irrigation logging, and ML-based crop recommendations.",
-    image: "./AMS.jpeg", // Ensure this image is in your public folder
+    image: "./AMS.jpeg", 
     tech: ["React", "Node.js", "Express", "MySQL", "Python", "ML", "OpenWeather API"],
     github: "https://github.com/Ash22686/AMS",
-    live: "#" // No live link
+    live: "#" 
   },
   {
     id: 4,
@@ -80,14 +79,11 @@ const projects = [
     github: "https://github.com/Ash22686/Hostel-Chat",
     live: "https://hostel-chat-chi.vercel.app/"
   },
-  
 ];
 
 // --- PROJECT CARD ---
 const ProjectCard = ({ project }) => (
   <div className="relative group w-full h-[480px] bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden flex flex-col hover:border-zinc-600 transition-all duration-300">
-    
-    {/* Image */}
     <div className="relative h-[50%] overflow-hidden bg-black">
       <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-all duration-500 z-10" />
       <img
@@ -99,7 +95,6 @@ const ProjectCard = ({ project }) => (
         }
         className="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:scale-110 group-hover:brightness-100 transition-all duration-700"
       />
-
       <div className="absolute top-4 left-4 z-20">
         <span className="bg-white text-black text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-widest">
           {project.category}
@@ -107,7 +102,6 @@ const ProjectCard = ({ project }) => (
       </div>
     </div>
 
-    {/* Content */}
     <div className="flex-1 p-6 flex flex-col justify-between bg-zinc-900 group-hover:bg-zinc-800/80 transition-colors">
       <div>
         <h3 className="text-xl font-bold uppercase tracking-wide mb-2 line-clamp-2">
@@ -139,7 +133,7 @@ const ProjectCard = ({ project }) => (
           <Github className="w-4 h-4" /> Code
         </a>
 
-        {project.live && (
+        {project.live && project.live !== "#" && (
           <a
             href={project.live}
             target="_blank"
@@ -154,7 +148,6 @@ const ProjectCard = ({ project }) => (
   </div>
 );
 
-// --- VIEW MORE CARD ---
 const ViewMoreCard = () => (
   <a
     href="https://github.com/Ash22686"
@@ -174,7 +167,6 @@ const ViewMoreCard = () => (
   </a>
 );
 
-// --- MAIN COMPONENT ---
 const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(1);
@@ -199,7 +191,6 @@ const Projects = () => {
       id="projects"
       className="min-h-screen bg-black text-white py-24 px-6 md:px-12 border-t border-white/20 overflow-hidden"
     >
-      {/* HEADER */}
       <div className="mb-16 ml-6">
         <h2 className="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-4">
           Selected <span className="text-gray-500">Work</span>
@@ -209,12 +200,11 @@ const Projects = () => {
         </p>
       </div>
 
-      {/* CAROUSEL */}
       <div className="overflow-hidden">
         <motion.div
           className="flex gap-6"
           animate={{ x: `-${currentIndex * (100 / itemsPerPage)}%` }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          transition={{ duration: 0.7, ease: "easeInOut" }}
           style={{ width: `${(totalItems / itemsPerPage) * 100}%` }}
         >
           {projects.map((project) => (
@@ -227,29 +217,32 @@ const Projects = () => {
             </div>
           ))}
 
-          <div
-            className="px-2"
-            style={{ width: `${100 / totalItems}%` }}
-          >
+          <div className="px-2" style={{ width: `${100 / totalItems}%` }}>
             <ViewMoreCard />
           </div>
         </motion.div>
       </div>
 
-      {/* CONTROLS */}
       <div className="flex justify-center gap-4 mt-14">
-        <button
-          onClick={() => setCurrentIndex((p) => (p === 0 ? maxIndex : p - 1))}
-          className="p-3 rounded-full border border-zinc-700 hover:bg-white hover:text-black"
+
+        {/* LEFT ARROW - Changed to div & added cursor-default */}
+        <div
+          role="button"
+          onClick={() => setCurrentIndex((p) => Math.max(0, p - 1))}
+          className="p-3 rounded-full border border-zinc-700 hover:bg-white hover:text-black cursor-default transition-all"
         >
           <ArrowLeft className="w-5 h-5" />
-        </button>
-        <button
-          onClick={() => setCurrentIndex((p) => (p >= maxIndex ? 0 : p + 1))}
-          className="p-3 rounded-full border border-zinc-700 hover:bg-white hover:text-black"
-        >
-          <ArrowRight className="w-5 h-5" />
-        </button>
+        </div>
+
+        {/* RIGHT ARROW */}
+<div
+  role="button"
+  onClick={() => setCurrentIndex((p) => Math.min(2, p + 1))}
+  className="p-3 rounded-full border border-zinc-700 hover:bg-white hover:text-black cursor-default transition-all"
+>
+  <ArrowRight className="w-5 h-5" />
+</div>
+
       </div>
     </section>
   );

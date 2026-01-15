@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { motion } from 'framer-motion';
 
@@ -47,15 +48,10 @@ const skillCategories = [
 const SkillCard = ({ name, icon }) => (
   <motion.div 
     whileHover={{ scale: 1.05 }}
-    className="flex flex-col items-center justify-center p-4 bg-zinc-900/30 border border-zinc-800 rounded-xl hover:bg-zinc-800 hover:border-zinc-600 transition-all duration-300 group cursor-pointer"
+    // REMOVED 'cursor-pointer' from the className below.
+    // This stops the custom cursor from triggering the "OPEN" text.
+    className="flex flex-col items-center justify-center p-4 bg-zinc-900/30 border border-zinc-800 rounded-xl hover:bg-zinc-800 hover:border-zinc-600 transition-all duration-300 group"
   >
-    {/* 
-       The CSS Filter trick:
-       grayscale(100%) -> removes color
-       brightness(0) -> turns it black
-       invert(100%) -> turns it white
-       group-hover:filter-none -> restores original color on hover
-    */}
     <img 
       src={icon} 
       alt={name} 
@@ -96,7 +92,7 @@ const Skills = () => {
         </div>
 
         {/* Categories Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-40">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-20 lg:gap-40">
           
           {skillCategories.map((category, index) => (
             <motion.div 
